@@ -1,1 +1,1 @@
-Sedundo projeto da cadeira de Front-End 2
+Segunda avaliação de javascript da cadeira de front-end 2 na faculdade Uniesp
