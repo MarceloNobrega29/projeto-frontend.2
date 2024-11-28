@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mensagens - Admin</title>
+    <link rel="stylesheet" href="css/default.css" />
+    
+    <script src="js/jquery-3.6.4.min.js"></script>
+    <script src="js/api.js"></script>
+
+    <table id="tabelaMensagens" border="1">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Email</th>
+                <th>Mensagem</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+    
+</head>
+<body>
+    
+    <script>
+        $(document).ready(function () {
+            var mensagens = obterMensagens();
+
+            if (Array.isArray(mensagens) && mensagens.length > 0) {
+                mensagens.forEach(function (mensagem) {
+                    if (mensagem.nome && mensagem.email && mensagem.mensagem) {
+                        $("#tabelaMensagens tbody").append(`
+                            <tr>
+                                <td>${mensagem.nome}</td>
+                                <td>${mensagem.email}</td>
+                                <td>${mensagem.mensagem}</td>
+                            </tr>
+                        `);
+                    } else {
+                        console.warn('Mensagem com dados incompletos:', mensagem);
+                    }
+                });
+            } else {
+                $("#tabelaMensagens tbody").append(`
+                    <tr>
+                        <td colspan="3">Nenhuma mensagem encontrada.</td>
+                    </tr>
+                `);
+            }
+        });
+    </script>
+    
+</body>
+</html>
